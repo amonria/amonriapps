@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
 
 import Task from './Task.jsx';
+import PopUps from './PopUps';
 
 // App component - represents the whole app
 export default class App extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            data: 'Initial data...'
+        };
+
+        this.updateState = this.updateState.bind(this);
+
+    };
+
     getTasks() {
         return [
             { _id: 1, text: 'This is task 1' },
@@ -18,6 +31,10 @@ export default class App extends Component {
         ));
     }
 
+    updateState(st) {
+        this.setState({data: st})
+    }
+
     render() {
         return (
             <div className="container">
@@ -28,7 +45,17 @@ export default class App extends Component {
                 <ul>
                     {this.renderTasks()}
                 </ul>
+                <div>
+                    <button onClick = {()=>this.updateState("1")}>STATE 1</button>
+                    <button onClick = {()=>this.updateState("2")}>STATE 2</button>
+                    <button onClick = {()=>this.updateState("2")}>POKAZ POPUP</button>
+                    <h4>{this.state.data}</h4>
+                </div>
+                {this.PopUps.render()}
             </div>
         );
     }
+
 }
+
+

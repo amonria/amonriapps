@@ -10,6 +10,7 @@
     "react": "^15.6.1",
     "react-addons-pure-render-mixin": "^15.6.0",
     "react-bootstrap": "^0.31.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-modal-bootstrap": "^1.1.1"
   }
 }
