@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
-import Task from './Task.jsx';
-import PopUps from './PopUps';
+import Task from './Task.jsx'
+import PopUps from './PopUps'
+import ModalSaveDesign from './modals/ModalSaveDesign'
 
 // App component - represents the whole app
 export default class App extends Component {
@@ -35,6 +36,10 @@ export default class App extends Component {
         this.setState({data: st})
     }
 
+    showModal(){
+        this.ModalSaveDesign.openModal();
+    }
+
     render() {
         return (
             <div className="container">
@@ -48,10 +53,10 @@ export default class App extends Component {
                 <div>
                     <button onClick = {()=>this.updateState("1")}>STATE 1</button>
                     <button onClick = {()=>this.updateState("2")}>STATE 2</button>
-                    <button onClick = {()=>this.updateState("2")}>POKAZ POPUP</button>
+                    <button onClick = {this.showModal}>POKAZ POPUP</button>
                     <h4>{this.state.data}</h4>
+                    <PopUps/>
                 </div>
-                {this.PopUps.render()}
             </div>
         );
     }
