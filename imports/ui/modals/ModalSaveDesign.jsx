@@ -13,10 +13,11 @@ export default class ModalSaveDesign extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-                isOpen: false}
-        }
+        this.state = {isOpen: false};
 
+        this.name = JSON.stringify(props);
+        this.updateState = this.updateState.bind(this);
+        }
 
     openModal = () => {
         this.setState({
@@ -30,26 +31,37 @@ export default class ModalSaveDesign extends Component {
         });
     };
 
+    updateState() {
+       if(this.state.isOpen)
+       {
+           this.openModal();
+       }
+       else {
+           this.hideModal();
+       }
+    }
+
     render(){
+
         return (<Modal isOpen={this.state.isOpen} onRequestHide={this.hideModal}>
             <ModalHeader>
                 <ModalClose onClick={this.hideModal}/>
                 <ModalTitle>Modal title</ModalTitle>
             </ModalHeader>
             <ModalBody>
-                <p>Ab ea ipsam iure perferendis! Ad debitis dolore excepturi
-                    explicabo hic incidunt placeat quasi repellendus soluta,
-                    vero. Autem delectus est laborum minus modi molestias
-                    natus provident, quidem rerum sint, voluptas!</p>
+                <p>zmienne w props</p>
+                <p>{this.name}</p>
+                <p>state w </p>
+                <p>{JSON.stringify(this.state)}</p>
             </ModalBody>
             <ModalFooter>
                 <button className='btn btn-default' onClick={this.hideModal}>
                     Close
                 </button>
                 <button className='btn btn-primary'>
-                    Save changes
+                    ZAPISZ
                 </button>
-            </ModalFooter>
+            </ModalFooter >
         </Modal>)
     }
 }

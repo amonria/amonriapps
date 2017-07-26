@@ -11,12 +11,12 @@ export default class App extends Component {
         super(props);
 
         this.state = {
-            data: 'Initial data...'
+            data: 'Initial data...',
         };
 
         this.updateState = this.updateState.bind(this);
 
-    };
+    }
 
     getTasks() {
         return [
@@ -37,26 +37,26 @@ export default class App extends Component {
     }
 
     showModal(){
-        this.ModalSaveDesign.openModal();
+      this.setState({isOpen: true})
     }
 
     render() {
         return (
             <div className="container">
                 <header>
-                    <h1>Todo List</h1>
+                    <h1>odpowiedź z serwea</h1>
                 </header>
-
                 <ul>
                     {this.renderTasks()}
                 </ul>
                 <div>
                     <button onClick = {()=>this.updateState("1")}>STATE 1</button>
                     <button onClick = {()=>this.updateState("2")}>STATE 2</button>
-                    <button onClick = {this.showModal}>POKAZ POPUP</button>
+                    <button onClick = {()=>this.showModal()}>POKAZ POPUP</button>
                     <h4>{this.state.data}</h4>
                     <PopUps/>
                 </div>
+                <ModalSaveDesign isOpen={this.state.isOpen} dat="Handsome" fff="dfg"/>
             </div>
         );
     }
