@@ -25,11 +25,7 @@ export default class ModalSaveDesign extends Component {
         });
     };
 
-    hideModal = () => {
-        this.setState({
-            isOpen: false
-        });
-    };
+
 
     updateState() {
        if(this.state.isOpen)
@@ -43,9 +39,9 @@ export default class ModalSaveDesign extends Component {
 
     render(){
 
-        return (<Modal isOpen={this.state.isOpen} onRequestHide={this.hideModal}>
+        return (<Modal  isOpen={this.props.isOpen} onRequestHide={()=>this.props.hideModal}>
             <ModalHeader>
-                <ModalClose onClick={this.hideModal}/>
+                <ModalClose onClick={this.props.hideModal}/>
                 <ModalTitle>Modal title</ModalTitle>
             </ModalHeader>
             <ModalBody>
@@ -55,7 +51,7 @@ export default class ModalSaveDesign extends Component {
                 <p>{JSON.stringify(this.state)}</p>
             </ModalBody>
             <ModalFooter>
-                <button className='btn btn-default' onClick={this.hideModal}>
+                <button className='btn btn-default' onClick={()=>this.props.hideModal}>
                     Close
                 </button>
                 <button className='btn btn-primary'>
